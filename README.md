@@ -16,3 +16,17 @@ calculateCost takes the following parameters:
 <li>start - the start date to calculate hire costs from (in format yyyy-MM-dd)
 <li>end - the end date to calculate hire costs until (in format yyyy-MM-dd)
 </ul>
+
+The application is pre-populated with vehicles with the following registrations:
+<ul>
+AB10 XYZ
+AB11 XYZ
+AB12 XYZ
+AB13 XYZ
+AB14 XYZ
+AB18 XYZ
+HI10 ZYX
+HI13 ZYX
+HI18 ZYX
+HI19 ZYX
+</ul>
