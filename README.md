@@ -34,20 +34,22 @@ The application is pre-populated with the following vehicles:
 Design:
 
 Vehicles are represented by the 'Vehicle' class, with the attributes:
+
 Registration, Category, Make, Model, Fuel, Price per day, Customer.
 
 The only changeable attribute is Customer, which is only present if the vehicle is hired.
 
 Category is represented via an enum - new categories of vehicle can be added to the system by simply adding them to this enum.
+
 Fuel type is represented via an enum - new categories of fuel (e.g. electric) can be added to the system by simply adding them to this enum.
 
 Prices of vehicles are fixed and stored within a static mapping of Vehicle. Prices changes can be made here, or preferably with future enhancements allowed to be dynamically updated.
-
+<br>
 
 The Stock class stores the company's stock of available and hired vehicles. This is currently pre-populated with demonstration data.
 The StockController provides a Spring REST api for the available functions to query the stock.
-
-
+<br>
+<br>
 
 Future Enhancements:
 
