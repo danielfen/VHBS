@@ -20,13 +20,20 @@ public class Vehicle {
 	}
 	
 	/** The vehicle registration */
-	final String reg;
-	final VehicleCategory category;
-	final String make;
-	final String model;
-	final Fuel fuelType;
-	Customer customer;
-	int pricePerDay;
+	private final String reg;
+	/** The type of this vehicle */
+	private final VehicleCategory category;
+	/** The make of this vehicle */
+	private final String make;
+	/** The model of this vehicle */
+	private final String model;
+	/** The fuel type of this vehicle */
+	private final Fuel fuelType;
+	/** The cost to hire this vehicle per day */
+	private final int pricePerDay;
+
+	/** The customer who is currently hiring this vehicle */
+	private Customer customer;
 	
 	public Vehicle(String reg, VehicleCategory category, String make, String model, Fuel fuelType) {
 		this.reg = reg;
@@ -38,9 +45,20 @@ public class Vehicle {
 		this.pricePerDay = prices.get(category);
 	}
 	
-	public long calculateHireCost(Date startDate, Date endDate)
-	{
-		long millisBetween = endDate.getTime() - startDate.getTime();
+	/**
+	 * Calculates the cost of hiring this vehicle between the given dates.
+	 * Vehicles can be hired to a minimum of 1 day, and only for entire days.
+	 * This method calculates the value for the number of days between the given range -
+	 * if the end date is earlier than the start date, this will be handled as if the end
+	 * date was the start date and the start date was the end date.
+	 * 
+	 * @param startDate the start date of the date range
+	 * @param endDate the end date of the date range
+	 * @return the cost for hiring the vehicle for the number of days in the given date range
+	 */
+	public long calculateHireCost(Date startDate, Date endDate) {
+		// Handle negative values where the start & end date have been passed the unexpected way around
+		long millisBetween = Math.abs(endDate.getTime() - startDate.getTime());
 		long daysBetween = TimeUnit.MILLISECONDS.toDays(millisBetween);
 		
 		// Add 1 to the days between as the minimum time a vehicle can be hired for is 1 day,
@@ -74,5 +92,9 @@ public class Vehicle {
 	
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+	
+	public int getPricePerDay() {
+		return pricePerDay;
 	}
 }

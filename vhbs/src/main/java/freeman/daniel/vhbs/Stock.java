@@ -5,10 +5,16 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class represents the stock of available and hired vehicles within the company.
+ * @author freeman_d
+ *
+ */
 public class Stock {
-	
-	Map<String, Vehicle> available = new HashMap<>();
-	Map<String, Vehicle> hired = new HashMap<>();
+	/** Mapping of vehicle registrations to the vehicles for those available to hire */
+	private final Map<String, Vehicle> available = new HashMap<>();
+	/** Mapping of vehicle registrations to the vehicles for those that are hired */
+	private final Map<String, Vehicle> hired = new HashMap<>();
 	
 	public Stock() {
 		// Pre populate the stock with initial data
@@ -30,22 +36,38 @@ public class Stock {
 		vehicleHired("HI19 ZYX", new Customer("Smiths Ltd", new GregorianCalendar(2020, 010, 30)));	
 	}
 	
-	
+	/**
+	 * @return the vehicles which are available for hire
+	 */
 	public Collection<Vehicle> listAvailableVehicles()
 	{
 		return available.values();
 	}
 	
+	/**
+	 * @return the vehicles which are currently hired
+	 */
 	public Collection<Vehicle> listHiredVehicles()
 	{
 		return hired.values();
 	}
 	
+	/**
+	 * Retrieves a vehicle available for hire with a given registration
+	 * @param reg the registration
+	 * @return the vehicle available for hire
+	 */
 	public Vehicle getAvailableVehicle(String reg)
 	{
 		return available.get(reg);
 	}
 	
+	/**
+	 * Handles a vehicle which has been hired, mapping the customer to the vehicle and
+	 * moving the vehicle to the store of hired vehicles.
+	 * @param reg the vehicle registration
+	 * @param customer the customer
+	 */
 	public void vehicleHired(String reg, Customer customer)
 	{
 		if (available.containsKey(reg))
@@ -60,11 +82,18 @@ public class Stock {
 		}
 	}
 	
+	/**
+	 * Handles a vehicle that has been returned, removing the customer from
+	 * the vehicle and moving it to the store of available vehicles.
+	 * @param reg the vehicle registration
+	 */
 	public void vehicleReturned(String reg)
 	{
-		if (available.containsKey(reg))
+		if (hired.containsKey(reg))
 		{
-			available.put(reg, hired.remove(reg));
+			Vehicle vehicle = hired.remove(reg);
+			vehicle.setCustomer(null);
+			available.put(reg, vehicle);
 		}
 		else
 		{

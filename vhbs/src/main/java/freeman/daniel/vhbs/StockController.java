@@ -8,29 +8,54 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * This class provides a REST API controller for the stock of available
+ * and hired vehicles.
+ * @author freeman_d
+ *
+ */
 @RestController
 public class StockController {
-	Stock stock = new Stock();
+	/** The stock of vehicles */
+	private final Stock stock = new Stock();
 
+	/**
+	 * @return the available vehicles for hire
+	 */
 	@GetMapping("/listForHire")
 	public Collection<Vehicle> listForHire()
 	{
 		return stock.listAvailableVehicles();
 	}
 	
+	/**
+	 * @return the vehicles which are currently hired
+	 */
 	@GetMapping("/listHired")
 	public Collection<Vehicle> listHired()
 	{
 		return stock.listHiredVehicles();
 	}
 
+	/**
+	 * Calculates the cost to hire a specific vehicle between two dates
+	 * @param reg the vehicle registration
+	 * @param start the date to start hiring the vehicle from
+	 * @param end the date to finish hiring the vehicle
+	 * @return the cost of hiring the vehicle
+	 */
 	@GetMapping("/calculateCost")
 	public long calculateHireCost(
 			@RequestParam("reg") String reg,
 			@RequestParam("start") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date start,
 			@RequestParam("end") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date end)
 	{
+		long cost = 0;
 		Vehicle vehicle = stock.getAvailableVehicle(reg);
-		return vehicle.calculateHireCost(start, end);
+		if (vehicle != null)
+		{
+			cost = vehicle.calculateHireCost(start, end);
+		}
+		return cost;
 	}	
 }

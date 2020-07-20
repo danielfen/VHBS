@@ -10,7 +10,4 @@ public class VhbsApplication {
 		// TODO populate initial data
 		SpringApplication.run(VhbsApplication.class, args);
 	}
-	
-
-
 }
