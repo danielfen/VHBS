@@ -17,16 +17,16 @@ calculateCost takes the following parameters:
 <li>end - the end date to calculate hire costs until (in format yyyy-MM-dd)
 </ul>
 
-The application is pre-populated with vehicles with the following registrations:
+The application is pre-populated with the following vehicles:
 <ul>
-<li>AB10 XYZ
-<li>AB11 XYZ
-<li>AB12 XYZ
-<li>AB13 XYZ
-<li>AB14 XYZ
-<li>AB18 XYZ
-<li>HI10 ZYX
-<li>HI13 ZYX
-<li>HI18 ZYX
-<li>HI19 ZYX
+<li>AB10 XYZ (Small Car, Available)
+<li>AB11 XYZ (Small Car, Available)
+<li>AB12 XYZ (Small Car, Available)
+<li>AB13 XYZ (Estate Car, Available)
+<li>AB14 XYZ (Estate Car, Available)
+<li>AB18 XYZ (Van Car, Available)
+<li>HI10 ZYX (Small Car, Hired)
+<li>HI13 ZYX (Estate Car, Hired)
+<li>HI18 ZYX (Van Car, Hired)
+<li>HI19 ZYX (Van Car, Hired)
 </ul>
