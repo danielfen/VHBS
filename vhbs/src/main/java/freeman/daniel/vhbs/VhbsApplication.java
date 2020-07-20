@@ -7,7 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class VhbsApplication {
 
 	public static void main(String[] args) {
+		// TODO populate initial data
 		SpringApplication.run(VhbsApplication.class, args);
 	}
+	
+
 
 }
