@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Responsive + Encoding Meta Tag -->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Stylesheet -->
+		<link href = "styles.css" rel = "stylesheet">
+		<!-- Title -->
+		<title>Vehicle Booking System</title>
+	</head>
+
+	<body>
+	  <h3 class="text-center">Vehicle Booking System</h3>
+		<div class="container" id="forHire">
+			<div class="card">
+			  <div class="card-section">
+				<p> For Hire  </p>
+			  </div>
+			  <table id="forHireTable">
+			  <thead>
+					<tr>
+					  <th v-on:click="sortTable('category')">Category</th>
+					  <th v-on:click="sortTable('make')">Make</th>
+					  <th v-on:click="sortTable('model')">Model</th>
+					  <th v-on:click="sortTable('fuelType')">Fuel Type</th>
+					  <th v-on:click="sortTable('pricePerDay')">Price / Day (£)</th>
+					  <th v-on:click="sortTable('registration')">Registration</th>
+					  <th>COST</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr v-for="row in sortedRows">
+					  <td>{{row.category}}</td>
+					  <td>{{row.make}}</td>
+					  <td>{{row.model}}</td>
+					  <td>{{row.fuelType}}</td>
+					  <td>{{row.pricePerDay}}</td>
+					  <td>{{row.registration}}</td>
+					  <td>calculateCost</td>
+					</tr>
+				  </tbody>
+				</table>	
+			</div>
+		</div>
+		
+		<div class="container" id="hired">
+			<div class="card">
+			  <div class="card-section">
+				<p> Hired  </p>
+			  </div>
+			  <table id="hiredTable">
+			  <thead>
+					<tr>
+					  <th v-on:click="sortTable('category')">Category</th>
+					  <th v-on:click="sortTable('make')">Make</th>
+					  <th v-on:click="sortTable('model')">Model</th>
+					  <th v-on:click="sortTable('fuelType')">Fuel Type</th>
+					  <th v-on:click="sortTable('pricePerDay')">Price / Day (£)</th>
+					  <th v-on:click="sortTable('registration')">Registration</th>
+					  <th v-on:click="sortTable('customer.name')">Customer</th>
+					  <th v-on:click="sortTable('customer.returnDate')">Return Date</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr v-for="row in sortedRows">
+					  <td>{{row.category}}</td>
+					  <td>{{row.make}}</td>
+					  <td>{{row.model}}</td>
+					  <td>{{row.fuelType}}</td>
+					  <td>{{row.pricePerDay}}</td>
+					  <td>{{row.registration}}</td>
+					  <td>{{row.customer.name}}</td>
+					  <td>{{row.customer.returnDate}}</td>
+					</tr>
+				  </tbody>
+				</table>	
+			</div>
+		</div>
+
+		<!-- Vue and Custom JavaScript -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="script.js"></script>
+	</body>
+
+</html>
