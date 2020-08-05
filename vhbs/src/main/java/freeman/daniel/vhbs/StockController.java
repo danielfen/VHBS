@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,7 @@ public class StockController {
 	/**
 	 * @return the available vehicles for hire
 	 */
+	@CrossOrigin
 	@GetMapping("/listForHire")
 	public Collection<Vehicle> listForHire()
 	{
@@ -31,6 +33,7 @@ public class StockController {
 	/**
 	 * @return the vehicles which are currently hired
 	 */
+	@CrossOrigin
 	@GetMapping("/listHired")
 	public Collection<Vehicle> listHired()
 	{
@@ -44,6 +47,7 @@ public class StockController {
 	 * @param end the date to finish hiring the vehicle
 	 * @return the cost of hiring the vehicle
 	 */
+	@CrossOrigin
 	@GetMapping("/calculateCost")
 	public long calculateHireCost(
 			@RequestParam("reg") String reg,
